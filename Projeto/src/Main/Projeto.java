@@ -4,6 +4,12 @@
  */
 package Main;
 
+import Controllers.PokeController;
+import Models.Poke;
+import Models.PokeDAO;
+import Views.PokeView;
+import java.util.Optional;
+
 
 
 
@@ -21,7 +27,15 @@ public class Projeto {
        //int probabilidade = (int) (Math.random() * 20) + 1;
         //System.out.println(probabilidade);
         
+        PokeDAO pokeDAO = new PokeDAO();
+        PokeController pokeController = new PokeController(pokeDAO);
+        PokeView pokeView = new PokeView(pokeController);
         
+        pokeView.listarTodos();
+        Poke p1 = pokeController.selecionar(1);
+        System.out.println("Nome: " + p1.getNome());
+        
+                
         
     }
     

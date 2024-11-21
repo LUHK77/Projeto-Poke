@@ -15,7 +15,7 @@ import java.sql.SQLException;
 public class DAO {
 
     
-    private static final String URL = "jdbc:mysql://localhost:3306/Projeto_PokePoki";
+    private static final String URL = "jdbc:mysql://localhost:3306/DBpoke";
     private static final String USER = "root";
     private static final String pswd = "root";
     
