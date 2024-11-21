@@ -18,7 +18,7 @@ import java.util.Optional;
  */
 public class PokeDAO {
 
-    public ArrayList<Poke> getStatus() {
+    public ArrayList<Poke> getAll() {
         ArrayList<Poke> pokes = new ArrayList<>();
         String sql = "SELECT id,nome,tipo,atk_base,stamina,hp,image_path FROM poke";
         try (
@@ -35,7 +35,7 @@ public class PokeDAO {
         return pokes;
     }
 
-    public Optional<Poke> selectPoke (int id) {
+    /*public Optional<Poke> selectPoke (int id) {
         String sql = "SELECT id,nome,tipo,atk_base,stamina,hp,image_path FROM poke WHERE id = ?";
         try (Connection conn = DAO.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, id);
@@ -51,5 +51,23 @@ public class PokeDAO {
             System.err.println(e.getMessage());
         }
         return Optional.empty();
+    } */
+    
+    public Poke selecionar(int id) {
+        String sql = "SELECT id,nome,tipo,atk_base,stamina,hp,image_path FROM poke WHERE id = ?";
+        try (Connection conn = DAO.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+
+                Poke p = new Poke(rs.getInt("id"), rs.getString("nome"), rs.getString("tipo"),
+                        rs.getInt("atk_base"), rs.getInt("stamina"), rs.getDouble("hp"), rs.getString("image_path"));
+                
+                return p;
+            }
+        }catch (SQLException e) {
+            System.err.println(e.getMessage());
     }
+        return null;
+ }
 }

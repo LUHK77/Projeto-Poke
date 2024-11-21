@@ -16,9 +16,14 @@ import java.util.Scanner;
 public class PokeView {
 
     private PokeController pokeController;
+
+    public PokeView(PokeController pokeController) {
+        this.pokeController = pokeController;
+    }
+    
     
     public void listarTodos() {
-        for (Poke p : pokeController.getStatus()) {
+        for (Poke p : pokeController.getAll()) {
             System.out.print("ID: ");
             System.out.print(p.getId() + "\t");
             System.out.print("Nome: ");
@@ -28,7 +33,7 @@ public class PokeView {
         }
     }
 
-    public Optional<Poke> selecionar() {
+    /*public Optional<Poke> selecionar() {
         Scanner teclado = new Scanner(System.in);
         System.out.println("Selecione seu poke pelo id");
         int id = teclado.nextInt();
@@ -39,6 +44,6 @@ public class PokeView {
                 () -> System.out.println("Este poke não existe")
         );
         return pk;
-    }
+    } */
 
 }
