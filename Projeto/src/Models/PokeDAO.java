@@ -4,6 +4,7 @@
  */
 package Models;
 
+import Models.Poke.Poke;
 import java.util.ArrayList;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -51,6 +52,9 @@ public class PokeDAO {
             System.err.println(e.getMessage());
         }
         return Optional.empty();
+    LOGICA DE ATAQUE
+    
+        return true;
     } */
     
     public Poke selecionar(int id) {

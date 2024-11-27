@@ -5,7 +5,7 @@
 package Views;
 
 import Controllers.PokeController;
-import Models.Poke;
+import Models.Poke.Poke;
 import java.util.Optional;
 import java.util.Scanner;
 

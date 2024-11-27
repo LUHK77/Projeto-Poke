@@ -4,6 +4,8 @@
  */
 package Models;
 
+import Models.Ataque.Ataque;
+
 /**
  *
  * @author Aluno
