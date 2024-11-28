@@ -18,6 +18,7 @@ public class SocoForte extends Ataque {
     private final int valor = 6;
     private final int custo = 8;
     private final Poke poke;
+    private int ataqueBase;
 
     public SocoForte(Poke poke) {
         this.poke = poke;

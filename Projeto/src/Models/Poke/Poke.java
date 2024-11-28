@@ -24,6 +24,7 @@ public abstract class Poke {
     private int cd;
     private Ataque atkPrimario;
     private Ataque atkSecundario;
+    private Poke inimigo;
     private String imagePath;
     
     public Poke(int id, String nome, String tipo, int ataqueBase, int stamina, double hp, String imagePath) {
@@ -114,6 +115,30 @@ public abstract class Poke {
         this.hp = hp;
     }
 
+    public Ataque getAtkPrimario() {
+        return atkPrimario;
+    }
+
+    public void setAtkPrimario(Ataque atkPrimario) {
+        this.atkPrimario = atkPrimario;
+    }
+
+    public Ataque getAtkSecundario() {
+        return atkSecundario;
+    }
+
+    public void setAtkSecundario(Ataque atkSecundario) {
+        this.atkSecundario = atkSecundario;
+    }
+
+    public Poke getInimigo() {
+        return inimigo;
+    }
+
+    public void setInimigo(Poke inimigo) {
+        this.inimigo = inimigo;
+    }
+    
     public String getImagePath() {
         return imagePath;
     }
@@ -121,10 +146,6 @@ public abstract class Poke {
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
     }
-
-    public abstract boolean atacar(Poke oponente);
-    
-    public abstract boolean atacar();
 
     public boolean descansar() {
         this.stamina += maxStamina * 0.3;

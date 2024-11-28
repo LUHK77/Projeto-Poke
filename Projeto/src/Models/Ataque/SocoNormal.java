@@ -17,10 +17,10 @@ public class SocoNormal extends Ataque {
     private final String efeito = "ofensivo";
     private final int valor = 2;
     private final int custo = 5;
-    private final Poke poke;
+    private int pokeAtaque;
 
-    public SocoNormal(Poke poke) {
-        this.poke = poke;
+    public SocoNormal(int pokeAtaque) {
+        this.pokeAtaque = pokeAtaque;
     }
 
     public String getNome() {
@@ -41,9 +41,7 @@ public class SocoNormal extends Ataque {
 
     @Override
     public boolean acao(Poke inimigo) {
-        int custoSt = poke.getStamina() - custo;
-        poke.setStamina(custoSt);
-        double dano = this.valor + poke.getAtaqueBase();
+        double dano = this.valor + this.pokeAtaque;
         double hpInimigo = inimigo.getHp();
         int probabilidade = (int) (Math.random() * 20) + 1;
         //Chance de Errar o  ataque
