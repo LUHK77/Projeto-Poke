@@ -4,7 +4,7 @@
  */
 package Controllers;
 
-import Models.Ataque;
+import Models.Ataque.Ataque;
 import Models.AtaqueDAO;
 
 /**

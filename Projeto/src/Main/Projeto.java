@@ -5,7 +5,7 @@
 package Main;
 
 import Controllers.PokeController;
-import Models.Poke;
+import Models.Poke.Poke;
 import Models.PokeDAO;
 import Views.PokeView;
 import java.util.Optional;

@@ -4,6 +4,9 @@
  */
 package Models;
 
+import Models.Ataque.Ataque;
+import Models.Poke.Poke;
+
 /**
  *
  * @author Aluno

@@ -4,7 +4,7 @@
  */
 package Controllers;
 
-import Models.Poke;
+import Models.Poke.Poke;
 import Models.PokeDAO;
 import java.util.ArrayList;
 import java.util.Optional;
