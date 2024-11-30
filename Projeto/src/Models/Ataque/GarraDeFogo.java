@@ -12,37 +12,18 @@ import Models.Poke.Poke;
  * @author Aluno
  */
 public class GarraDeFogo extends Ataque {
-    private final String nome = "Garra de Fogo";
-    private final String efeito = "ofensivo";
-    private final int valor = 7;
-    private final int custo = 9;
-    private final Poke poke;
 
-    public GarraDeFogo(Poke poke) {
-        this.poke = poke;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public String getEfeito() {
-        return efeito;
-    }
-
-    public int getValor() {
-        return valor;
-    }
-
-    public int getCusto() {
-        return custo;
+   public GarraDeFogo(int pokeAtaque) {
+        this.setNome("Garra de Fogo");
+        this.setEfeito("ofensivo");
+        this.setValor(7);
+        this.setCusto(9);
+        this.setAtaqueBase(pokeAtaque);
     }
 
     @Override
     public boolean acao(Poke inimigo) {
-        int custoSt = poke.getStamina() - custo;
-        poke.setStamina(custoSt);
-        double dano = this.valor + poke.getAtaqueBase();
+        double dano = this.getValor() + this.getAtaqueBase();
         double hpInimigo = inimigo.getHp();
         int probabilidade = (int) (Math.random() * 20) + 1;
         //Chance de Errar o  ataque
@@ -66,7 +47,7 @@ public class GarraDeFogo extends Ataque {
     }
 
     @Override
-    public boolean acao() {
+    public int acao() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

@@ -3,22 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Aluno/Documents/NetBeansProjects/Projeto/src/Models/Ataque/GarraDeFogo.java</file>
-            <file>file:/C:/Users/Aluno/Documents/NetBeansProjects/Projeto/src/Views/PokeGUI.java</file>
-            <file>file:/C:/Users/Aluno/Documents/NetBeansProjects/Projeto/src/Models/PokeDAO.java</file>
-            <file>file:/C:/Users/Aluno/Documents/NetBeansProjects/Projeto/src/Views/PokeView.java</file>
-            <file>file:/C:/Users/Aluno/Documents/NetBeansProjects/Projeto/src/Models/AtaqueDAO.java</file>
-            <file>file:/C:/Users/Aluno/Documents/NetBeansProjects/Projeto/src/Models/Poke/GaloCururu.java</file>
-            <file>file:/C:/Users/Aluno/Documents/NetBeansProjects/Projeto/src/Models/Ataque/SocoNormal.java</file>
-            <file>file:/C:/Users/Aluno/Documents/NetBeansProjects/Projeto/src/Models/Ataque/Ataque.java</file>
-            <file>file:/C:/Users/Aluno/Documents/NetBeansProjects/Projeto/src/Models/Ataque/ArmaduraDeMadeira.java</file>
-            <file>file:/C:/Users/Aluno/Documents/NetBeansProjects/Projeto/src/Controllers/AtaqueController.java</file>
-            <file>file:/C:/Users/Aluno/Documents/NetBeansProjects/Projeto/src/img/poke_01.png</file>
-            <file>file:/C:/Users/Aluno/Documents/NetBeansProjects/Projeto/src/Models/Poke/Biloga.java</file>
-            <file>file:/C:/Users/Aluno/Documents/NetBeansProjects/Projeto/src/Controllers/PokeController.java</file>
-            <file>file:/C:/Users/Aluno/Documents/NetBeansProjects/Projeto/src/Models/Player.java</file>
-            <file>file:/C:/Users/Aluno/Documents/NetBeansProjects/Projeto/src/Models/Ataque/SocoForte.java</file>
-            <file>file:/C:/Users/Aluno/Documents/NetBeansProjects/Projeto/src/Models/Poke/Poke.java</file>
+            <file>file:/C:/Users/Aluno/Documents/NetBeansProjects/Projeto-Poke-main/Projeto/src/Models/Ataque/Ataque.java</file>
+            <file>file:/C:/Users/Aluno/Documents/NetBeansProjects/Projeto-Poke-main/Projeto/src/Models/Poke/GaloCururu.java</file>
+            <file>file:/C:/Users/Aluno/Documents/NetBeansProjects/Projeto-Poke-main/Projeto/src/Models/Ataque/GarraDeFogo.java</file>
+            <file>file:/C:/Users/Aluno/Documents/NetBeansProjects/Projeto-Poke-main/Projeto/src/Models/ataqueOfensivo.java</file>
+            <file>file:/C:/Users/Aluno/Documents/NetBeansProjects/Projeto-Poke-main/Projeto/src/Models/Poke/Poke.java</file>
         </group>
     </open-files>
 </project-private>

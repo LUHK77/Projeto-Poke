@@ -156,5 +156,15 @@ public abstract class Poke {
         }
         return true;
     }
+    
+    public boolean consumoStamina(int custo){
+    int staminaR = this.stamina - custo;
+        if (staminaR > this.stamina) {
+            return false;
+    } else {
+            this.setStamina(staminaR);
+            return true;
+        }
 
+    }
 }

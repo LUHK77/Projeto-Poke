@@ -4,29 +4,29 @@
  */
 package Models.Poke;
 
+import Models.Ataque.ArmaduraDeMadeira;
 import Models.Ataque.Ataque;
-import Models.Ataque.GarraDeFogo;
-import Models.Ataque.SocoNormal;
+import Models.Ataque.SocoForte;
 
 /**
  *
  * @author Aluno
  */
-public class GaloCururu extends Poke {
+public class Papaco extends Poke {
 
-    private Ataque atkPrimario = new SocoNormal(this.getAtaqueBase());
-    private Ataque atkSecundario = new GarraDeFogo(this.getAtaqueBase());
+    private Ataque atkPrimario = new SocoForte(this.getAtaqueBase());
+    private Ataque atkSecundario = new ArmaduraDeMadeira(this.getCd());
 
-    public GaloCururu() {
-        this.setNome("Galo Cururu");
-        this.setTipo("fogo");
-        this.setAtaqueBase(8);
-        this.setStamina(16);
-        this.setMaxStamina(16);
-        this.setHp(20);
-        this.setMaxHp(20);
-        this.setCd(5);
-        this.setImagePath("/img/poke_01.png");
+    public Papaco() {
+        this.setNome("Papaco");
+        this.setTipo("grama");
+        this.setAtaqueBase(9);
+        this.setStamina(12);
+        this.setMaxStamina(12);
+        this.setHp(35);
+        this.setMaxHp(35);
+        this.setCd(6);
+        this.setImagePath("/img/poke_02.png");
     }
 
     public boolean Atacar1(Poke inimigo) {
@@ -40,7 +40,8 @@ public class GaloCururu extends Poke {
 
     public boolean Atacar2(Poke inimigo) {
         if (this.consumoStamina(atkSecundario.getCusto())) {
-            this.atkSecundario.acao(inimigo);
+            int nCd = this.atkSecundario.acao();
+            this.setCd(nCd);
             return true;
         } else {
             return false;

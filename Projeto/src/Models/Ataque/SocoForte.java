@@ -13,38 +13,17 @@ import Models.Poke.Poke;
  */
 public class SocoForte extends Ataque {
 
-    private final String nome = "Soco Forte";
-    private final String efeito = "ofensivo";
-    private final int valor = 6;
-    private final int custo = 8;
-    private final Poke poke;
-    private int ataqueBase;
-
-    public SocoForte(Poke poke) {
-        this.poke = poke;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public String getEfeito() {
-        return efeito;
-    }
-
-    public int getValor() {
-        return valor;
-    }
-
-    public int getCusto() {
-        return custo;
+    public SocoForte(int pokeAtaque) {
+        this.setNome("Soco Forte");
+        this.setEfeito("ofensivo");
+        this.setValor(6);
+        this.setCusto(8);
+        this.setAtaqueBase(pokeAtaque);
     }
 
     @Override
     public boolean acao(Poke inimigo) {
-        int custoSt = poke.getStamina() - custo;
-        poke.setStamina(custoSt);
-        double dano = this.valor + poke.getAtaqueBase();
+        double dano = this.getValor() + this.getAtaqueBase();
         double hpInimigo = inimigo.getHp();
         int probabilidade = (int) (Math.random() * 20) + 1;
         //Chance de Errar o  ataque
@@ -53,7 +32,7 @@ public class SocoForte extends Ataque {
         } else {
             //Chance de dar dano critico
             if (probabilidade == 20) {
-                dano *= 2.5;
+                dano *= 2;
             }
             inimigo.setHp(hpInimigo - dano);
             //Caso o oponente seja derrotado
@@ -65,7 +44,7 @@ public class SocoForte extends Ataque {
     }
 
     @Override
-    public boolean acao() {
+    public int acao() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

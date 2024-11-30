@@ -11,33 +11,25 @@ import Models.Poke.Poke;
  * @author Aluno
  */
 public class ArmaduraDeMadeira extends Ataque {
-    private final String nome = "Armadura De Madeira";
-    private final String efeito = "defensivo";
-    private final int valor = 7;
-    private final int custo = 10;
+    private int pokeCd;
     private final int duracaoPorTurno = 5;
+
+    public ArmaduraDeMadeira(int pokeCd) {
+        this.setNome("Armadura De Madeira");
+        this.setEfeito("defensivo");
+        this.setValor(7);
+        this.setCusto(10);
+        this.setPokeCd(pokeCd);
+    }
+
+    public int getPokeCd() {
+        return pokeCd;
+    }
+
+    public void setPokeCd(int pokeCd) {
+        this.pokeCd = pokeCd;
+    }
     
-    private final Poke poke;
-
-    public ArmaduraDeMadeira(Poke poke) {
-        this.poke = poke;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public String getEfeito() {
-        return efeito;
-    }
-
-    public int getValor() {
-        return valor;
-    }
-
-    public int getCusto() {
-        return custo;
-    }
     
     public int getDuracaoPorTurno(){
         return duracaoPorTurno;
@@ -49,10 +41,9 @@ public class ArmaduraDeMadeira extends Ataque {
     }
 
     @Override
-    public boolean acao() {
-        int cd = poke.getCd() + this.valor;
-        poke.setCd(cd);
-        return true;
+    public int acao() {
+        int cd = this.pokeCd + this.getValor();
+        return cd;
     }
     
 }

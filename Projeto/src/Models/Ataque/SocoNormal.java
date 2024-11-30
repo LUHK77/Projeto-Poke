@@ -3,8 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Models.Ataque;
-
-import Models.Ataque.Ataque;
 import Models.Poke.Poke;
 
 /**
@@ -13,35 +11,17 @@ import Models.Poke.Poke;
  */
 public class SocoNormal extends Ataque {
 
-    private final String nome = "Soco Normal";
-    private final String efeito = "ofensivo";
-    private final int valor = 2;
-    private final int custo = 5;
-    private int pokeAtaque;
-
     public SocoNormal(int pokeAtaque) {
-        this.pokeAtaque = pokeAtaque;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public String getEfeito() {
-        return efeito;
-    }
-
-    public int getValor() {
-        return valor;
-    }
-
-    public int getCusto() {
-        return custo;
+        this.setNome("Soco Normal");
+        this.setEfeito("ofensivo");
+        this.setValor(2);
+        this.setCusto(5);
+        this.setAtaqueBase(pokeAtaque);
     }
 
     @Override
     public boolean acao(Poke inimigo) {
-        double dano = this.valor + this.pokeAtaque;
+        double dano = this.getValor() + this.getAtaqueBase();
         double hpInimigo = inimigo.getHp();
         int probabilidade = (int) (Math.random() * 20) + 1;
         //Chance de Errar o  ataque
@@ -62,7 +42,7 @@ public class SocoNormal extends Ataque {
     }
 
     @Override
-    public boolean acao() {
+    public int acao() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
