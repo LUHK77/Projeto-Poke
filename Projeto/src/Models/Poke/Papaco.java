@@ -14,9 +14,6 @@ import Models.Ataque.SocoForte;
  */
 public class Papaco extends Poke {
 
-    private Ataque atkPrimario = new SocoForte(this.getAtaqueBase());
-    private Ataque atkSecundario = new ArmaduraDeMadeira(this.getCd());
-
     public Papaco() {
         this.setNome("Papaco");
         this.setTipo("grama");
@@ -27,18 +24,17 @@ public class Papaco extends Poke {
         this.setMaxHp(35);
         this.setCd(6);
         this.setImagePath("/img/poke_02.png");
+        this.setAtkPrimario(new SocoForte(this.getAtaqueBase()));
+        this.setAtkSecundario(new ArmaduraDeMadeira(this.getCd()));
     }
 
-    public boolean Atacar1(Poke inimigo) {
-        if (this.consumoStamina(atkPrimario.getCusto())) {
-            this.atkPrimario.acao(inimigo);
-            return true;
-        } else {
-            return false;
-        }
+    @Override
+    public boolean atacarPrimario() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public boolean Atacar2(Poke inimigo) {
+    @Override
+    public boolean atacarSecundario() {
         if (this.consumoStamina(atkSecundario.getCusto())) {
             int nCd = this.atkSecundario.acao();
             this.setCd(nCd);

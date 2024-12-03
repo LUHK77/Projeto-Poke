@@ -14,9 +14,6 @@ import Models.Ataque.SocoNormal;
  */
 public class GaloCururu extends Poke {
 
-    private Ataque atkPrimario = new SocoNormal(this.getAtaqueBase());
-    private Ataque atkSecundario = new GarraDeFogo(this.getAtaqueBase());
-
     public GaloCururu() {
         this.setNome("Galo Cururu");
         this.setTipo("fogo");
@@ -27,23 +24,18 @@ public class GaloCururu extends Poke {
         this.setMaxHp(20);
         this.setCd(5);
         this.setImagePath("/img/poke_01.png");
+        this.setAtkPrimario(new SocoNormal(this.getAtaqueBase()));
+        this.setAtkPrimario(new GarraDeFogo(this.getAtaqueBase()));
     }
 
-    public boolean Atacar1(Poke inimigo) {
-        if (this.consumoStamina(atkPrimario.getCusto())) {
-            this.atkPrimario.acao(inimigo);
-            return true;
-        } else {
-            return false;
-        }
+    @Override
+    public boolean atacarPrimario() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public boolean Atacar2(Poke inimigo) {
-        if (this.consumoStamina(atkSecundario.getCusto())) {
-            this.atkSecundario.acao(inimigo);
-            return true;
-        } else {
-            return false;
-        }
+    @Override
+    public boolean atacarSecundario() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
 }

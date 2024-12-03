@@ -47,7 +47,3 @@ public class ArmaduraDeMadeira extends Ataque {
     }
     
 }
-
-   
-    
-

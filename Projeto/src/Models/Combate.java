@@ -45,8 +45,25 @@ public class Combate {
         this.turnos = turnos;
     }
     
-    public void startCombat(){
-    
+    public void acao(int escolhaP1, int escolhaP2){
+     do{
+         switch(escolhaP1){
+             case 1->{
+             }
+             case 2->{
+             p1.descansar();
+             }
+             case 3->{}
+         }
+         switch(escolhaP2){
+             case 1->{}
+             case 2->{
+             p2.descansar();
+             }
+             case 3->{}
+         }
+      this.turnos++;
+     } while(p1.getHp() == 0 || p2.getHp() == 0);
     }
     
 }
