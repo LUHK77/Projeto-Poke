@@ -4,16 +4,22 @@
  */
 package Views;
 
+import Controllers.PokeDaoController;
+import Models.PokeDAO;
+
 /**
  *
  * @author Aluno
  */
 public class PokeGUI extends javax.swing.JFrame {
+    
+    private PokeDaoController pokeDaoController;
 
     /**
      * Creates new form pokeGUI
      */
-    public PokeGUI() {
+    public PokeGUI(PokeDaoController pokeDaoController) {
+        this.pokeDaoController = pokeDaoController;
         initComponents();
     }
 
@@ -28,13 +34,14 @@ public class PokeGUI extends javax.swing.JFrame {
 
         jFrame1 = new javax.swing.JFrame();
         jButton1 = new javax.swing.JButton();
-        p1 = new javax.swing.JLabel();
-        pokeNome = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        pokeAtributos = new javax.swing.JList<>();
-        imgLabel = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jProgressBar1 = new javax.swing.JProgressBar();
+        lblNome = new javax.swing.JLabel();
+        imgPoke = new javax.swing.JLabel();
+        lblAtaque = new javax.swing.JLabel();
+        lblHp = new javax.swing.JLabel();
+        hpBar = new javax.swing.JProgressBar();
+        lblSt = new javax.swing.JLabel();
+        atkBar = new javax.swing.JProgressBar();
+        StBar = new javax.swing.JProgressBar();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -50,73 +57,100 @@ public class PokeGUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setText("Selecionar");
-
-        p1.setText("P1");
-
-        pokeNome.setText("nome");
-
-        pokeAtributos.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
         });
-        jScrollPane1.setViewportView(pokeAtributos);
 
-        imgLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/poke_01.png"))); // NOI18N
+        lblNome.setText("Nome");
 
-        jLabel1.setLabelFor(jProgressBar1);
-        jLabel1.setText("jLabel1");
+        imgPoke.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/poke_01.png"))); // NOI18N
+
+        lblAtaque.setText("ATK:");
+        lblAtaque.setToolTipText("");
+
+        lblHp.setText("HP:");
+
+        hpBar.setBackground(new java.awt.Color(51, 255, 0));
+        hpBar.setValue(30);
+
+        lblSt.setText("ST:");
+
+        atkBar.setBackground(new java.awt.Color(51, 51, 51));
+        atkBar.setForeground(java.awt.Color.RED);
+        atkBar.setValue(30);
+
+        StBar.setBackground(new java.awt.Color(51, 255, 0));
+        StBar.setValue(30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(105, 105, 105)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(214, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(pokeNome, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(imgLabel)
-                        .addGap(51, 51, 51)
+                        .addComponent(imgPoke)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
+                                .addGap(39, 39, 39)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblSt)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(StBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblHp)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(hpBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(33, 33, 33)
+                                .addComponent(lblAtaque)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(atkBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(112, 112, 112)
-                        .addComponent(p1)))
-                .addContainerGap(123, Short.MAX_VALUE))
+                        .addComponent(lblNome)))
+                .addGap(55, 55, 55))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(277, 277, 277)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(p1)
+                .addGap(72, 72, 72)
+                .addComponent(lblNome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(imgLabel)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)))
-                .addGap(29, 29, 29)
-                .addComponent(pokeNome)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(imgPoke)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblAtaque)
+                            .addComponent(atkBar, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblHp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(hpBar, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblSt)
+                            .addComponent(StBar, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(99, 99, 99)))
+                .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -149,20 +183,23 @@ public class PokeGUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PokeGUI().setVisible(true);
+                PokeDAO pokeDao = new PokeDAO();
+                PokeDaoController pokeDaoController = new PokeDaoController(pokeDao);
+                new PokeGUI(pokeDaoController).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel imgLabel;
+    private javax.swing.JProgressBar StBar;
+    private javax.swing.JProgressBar atkBar;
+    private javax.swing.JProgressBar hpBar;
+    private javax.swing.JLabel imgPoke;
     private javax.swing.JButton jButton1;
     private javax.swing.JFrame jFrame1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JProgressBar jProgressBar1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel p1;
-    private javax.swing.JList<String> pokeAtributos;
-    private javax.swing.JLabel pokeNome;
+    private javax.swing.JLabel lblAtaque;
+    private javax.swing.JLabel lblHp;
+    private javax.swing.JLabel lblNome;
+    private javax.swing.JLabel lblSt;
     // End of variables declaration//GEN-END:variables
 }

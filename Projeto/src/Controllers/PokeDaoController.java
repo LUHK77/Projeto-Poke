@@ -21,7 +21,7 @@ public class PokeDaoController {
     }
     
     public ArrayList<Poke> getAll(){
-    return pokeDao.getAll();
+    return null;
     }
     
     /*public Optional<Poke> selecionarPoke(int id){
@@ -29,6 +29,6 @@ public class PokeDaoController {
     } */
     
     public Poke selecionar(int id){
-     return pokeDao.selecionar(id);
+     return pokeDao.selecionarI(id);
     }
  }
