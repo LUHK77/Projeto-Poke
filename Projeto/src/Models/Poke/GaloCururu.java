@@ -14,7 +14,14 @@ import Models.Ataque.SocoNormal;
  */
 public class GaloCururu extends Poke {
 
-    public GaloCururu() {
+    public GaloCururu(String apelido,int level,int exp,int stamina,double hp) {
+        //Parte recebida na classe
+        this.setApelido(apelido);
+        this.setLevel(level);
+        this.setExp(exp);
+        this.setHp(hp);
+        this.setStamina(stamina);
+        //Parte ja setada
         this.setId(1);
         this.setNome("Galo Cururu");
         this.setTipo("fogo");

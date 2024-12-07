@@ -14,8 +14,11 @@ import java.util.Random;
 public abstract class Poke {
 
     private int id;
+    private String apelido;
     private String nome;
     private String tipo;
+    private int level;
+    private int exp;
     private int ataqueBase;
     private int stamina;
     private int maxStamina;
@@ -26,20 +29,16 @@ public abstract class Poke {
     public Ataque atkSecundario;
     private String imagePath;
     
-    public Poke(int id, String nome, String tipo, int ataqueBase, int stamina, double hp, String imagePath) {
-        this.id = id;
-        this.nome = nome;
-        this.tipo = tipo;
-        this.ataqueBase = ataqueBase;
-        this.stamina = stamina;
-        this.hp = hp;
-        this.imagePath = imagePath;
-        this.maxHp += hp;
-        this.maxStamina += stamina;
+    public Poke() {
+     //Vazio
     }
 
-    public Poke() {
-        //Vazio
+    public Poke(String apelido,int level,int exp,int stamina,double hp) {
+        this.apelido = apelido;
+        this.level = level;
+        this.exp = exp;
+        this.stamina = stamina;
+        this.hp = hp;
     }
 
     public int getId() {
@@ -50,6 +49,30 @@ public abstract class Poke {
         this.id = id;
     }
 
+    public String getApelido() {
+        return apelido;
+    }
+
+    public void setApelido(String apelido) {
+        this.apelido = apelido;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public int getExp() {
+        return exp;
+    }
+
+    public void setExp(int exp) {
+        this.exp = exp;
+    }
+    
     public int getMaxStamina() {
         return maxStamina;
     }

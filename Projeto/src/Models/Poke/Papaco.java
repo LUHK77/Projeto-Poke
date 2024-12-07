@@ -14,14 +14,19 @@ import Models.Ataque.SocoForte;
  */
 public class Papaco extends Poke {
 
-    public Papaco() {
+    public Papaco(String apelido,int level,int exp,int stamina,double hp) {
+        //Parte recebida na classe
+        this.setApelido(apelido);
+        this.setLevel(level);
+        this.setExp(exp);
+        this.setHp(hp);
+        this.setStamina(stamina);
+        //Parte ja setada
         this.setId(2);
         this.setNome("Papaco");
         this.setTipo("grama");
         this.setAtaqueBase(9);
-        this.setStamina(12);
         this.setMaxStamina(12);
-        this.setHp(35);
         this.setMaxHp(35);
         this.setCd(6);
         this.setImagePath("/img/poke_02.png");

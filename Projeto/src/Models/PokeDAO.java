@@ -21,22 +21,21 @@ import java.util.Optional;
  */
 public class PokeDAO {
 
-   /* public public ArrayList<Poke> getAll() {
+     public ArrayList<Poke> getAll() {
         ArrayList<Poke> pokes = new ArrayList<>();
-        String sql = "SELECT id,nome,stamina,hp,image_path FROM poke";
+        String sql = "SELECT apelido, level_poke, exp_poke, hp, stamina FROM poke";
         try (
                 Connection conn = DAO.getConnection(); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                Poke p = new Poke(rs.getString("nome"),rs.getInt("stamina"), rs.getDouble("hp"));
+                Poke p = new Poke(rs.getString("apelido"), rs.getInt("level_poke"), rs.getInt("exp_poke"),rs.getInt("hp"), rs.getInt("stamina")) {};
                 pokes.add(p);
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
         return pokes;
-    } */
-    
-  /*  public Poke selecionar(int id) {
+    } 
+ /*  public Poke selecionar(int id) {
         String sql = "SELECT id,nome,tipo,atk_base,stamina,hp,image_path FROM poke WHERE id = ?";
         try (Connection conn = DAO.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, id);
@@ -53,38 +52,59 @@ public class PokeDAO {
         }
         return null;
     } */
-
     public Poke selecionarI(int id) {
-        Poke poke;
-        switch (id) {
+        String sql = "SELECT apelido, level_poke,exp_poke,hp,stamina FROM poke WHERE id = id";
+        Poke p;
+        try (Connection conn = DAO.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                switch (id) {
 
-            case 1 -> {
-                return poke = new GaloCururu();
+                    case 1 -> {
+                        p = new GaloCururu(rs.getString("apelido"), rs.getInt("level_poke"), rs.getInt("exp_poke"),
+                                rs.getInt("hp"), rs.getInt("stamina"));
+                    }
+                    case 2 -> {
+                        p = new Papaco(rs.getString("apelido"), rs.getInt("level_poke"), rs.getInt("exp_poke"),
+                                rs.getInt("hp"), rs.getInt("stamina"));
+                    }
+                    default -> {
+                        return p = null;
+                    }
+                }
             }
-            case 2 -> {
-                return poke = new Papaco();
-            }
-
-            default -> {
-                return poke = null;
-            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
         }
+        return null;
     }
     
     public Poke selecionarN(String nome) {
-        Poke poke;
-        switch (nome) {
+        String sql = "SELECT apelido, level_poke,exp_poke,hp,stamina FROM poke WHERE apelido = apelido";
+        Poke p;
+        try (Connection conn = DAO.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, nome);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                switch (nome) {
 
-            case "Galo Cururu" -> {
-                return poke = new GaloCururu();
+                    case "Galo Cururu" -> {
+                        p = new GaloCururu(rs.getString("apelido"), rs.getInt("level_poke"), rs.getInt("exp_poke"),
+                                rs.getInt("hp"), rs.getInt("stamina"));
+                    }
+                    case "Papaco" -> {
+                        p = new Papaco(rs.getString("apelido"), rs.getInt("level_poke"), rs.getInt("exp_poke"),
+                                rs.getInt("hp"), rs.getInt("stamina"));
+                    }
+                    default -> {
+                        return p = null;
+                    }
+                }
             }
-            case "Papaco" -> {
-                return poke = new Papaco();
-            }
-
-            default -> {
-                return poke = null;
-            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
         }
+        return null;
     }
 }

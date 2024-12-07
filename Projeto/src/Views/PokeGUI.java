@@ -42,6 +42,7 @@ public class PokeGUI extends javax.swing.JFrame {
         lblSt = new javax.swing.JLabel();
         atkBar = new javax.swing.JProgressBar();
         StBar = new javax.swing.JProgressBar();
+        jProgressBar1 = new javax.swing.JProgressBar();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -55,7 +56,10 @@ public class PokeGUI extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(51, 51, 51));
 
+        jButton1.setBackground(new java.awt.Color(51, 51, 51));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Selecionar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,7 +76,8 @@ public class PokeGUI extends javax.swing.JFrame {
 
         lblHp.setText("HP:");
 
-        hpBar.setBackground(new java.awt.Color(51, 255, 0));
+        hpBar.setBackground(new java.awt.Color(51, 51, 51));
+        hpBar.setForeground(new java.awt.Color(102, 255, 51));
         hpBar.setValue(30);
 
         lblSt.setText("ST:");
@@ -81,8 +86,11 @@ public class PokeGUI extends javax.swing.JFrame {
         atkBar.setForeground(java.awt.Color.RED);
         atkBar.setValue(30);
 
-        StBar.setBackground(new java.awt.Color(51, 255, 0));
+        StBar.setBackground(new java.awt.Color(51, 51, 51));
         StBar.setValue(30);
+
+        jProgressBar1.setForeground(new java.awt.Color(255, 153, 153));
+        jProgressBar1.setValue(40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -104,7 +112,8 @@ public class PokeGUI extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(lblHp)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(hpBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(hpBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(33, 33, 33)
                                 .addComponent(lblAtaque)
@@ -126,7 +135,11 @@ public class PokeGUI extends javax.swing.JFrame {
                 .addComponent(lblNome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(imgPoke)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(imgPoke)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)
+                        .addContainerGap(113, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblAtaque)
@@ -139,10 +152,9 @@ public class PokeGUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblSt)
                             .addComponent(StBar, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(99, 99, 99)))
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(113, Short.MAX_VALUE))
+                        .addGap(95, 95, 95)
+                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(150, 150, 150))))
         );
 
         pack();
@@ -197,6 +209,7 @@ public class PokeGUI extends javax.swing.JFrame {
     private javax.swing.JLabel imgPoke;
     private javax.swing.JButton jButton1;
     private javax.swing.JFrame jFrame1;
+    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JLabel lblAtaque;
     private javax.swing.JLabel lblHp;
     private javax.swing.JLabel lblNome;
