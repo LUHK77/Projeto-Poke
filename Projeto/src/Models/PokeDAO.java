@@ -13,45 +13,40 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Optional;
 
 /**
  *
  * @author Aluno
  */
 public class PokeDAO {
+    
+    public ArrayList<Poke>pokes;
 
-     public ArrayList<Poke> getAll() {
+    private Poke criaPokeClass(int id, String apelido, int level, int exp, int hp, int stamina) {
+        Poke p;
+        switch (id) {
+            case 1 -> {return p = new GaloCururu(apelido, level, exp, hp, stamina);}
+            case 2 -> {return p = new Papaco(apelido, level, exp, hp, stamina);}
+        }
+        return p = null;
+    }
+
+    public ArrayList<Poke> getAll() {
         ArrayList<Poke> pokes = new ArrayList<>();
-        String sql = "SELECT apelido, level_poke, exp_poke, hp, stamina FROM poke";
+        String sql = "SELECT id,apelido, level_poke, exp_poke, hp, stamina FROM poke";
         try (
                 Connection conn = DAO.getConnection(); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                Poke p = new Poke(rs.getString("apelido"), rs.getInt("level_poke"), rs.getInt("exp_poke"),rs.getInt("hp"), rs.getInt("stamina")) {};
+                Poke p = criaPokeClass(rs.getInt("id"), rs.getString("apelido"), rs.getInt("level_poke"), rs.getInt("exp_poke"), rs.getInt("hp"), rs.getInt("stamina"));
                 pokes.add(p);
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
+        this.pokes = pokes;
         return pokes;
-    } 
- /*  public Poke selecionar(int id) {
-        String sql = "SELECT id,nome,tipo,atk_base,stamina,hp,image_path FROM poke WHERE id = ?";
-        try (Connection conn = DAO.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, id);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
+    }
 
-                Poke p = new Poke(rs.getInt("id"), rs.getString("nome"), rs.getString("tipo"),
-                        rs.getInt("atk_base"), rs.getInt("stamina"), rs.getDouble("hp"), rs.getString("image_path"));
-
-                return p;
-            }
-        } catch (SQLException e) {
-            System.err.println(e.getMessage());
-        }
-        return null;
-    } */
     public Poke selecionarI(int id) {
         String sql = "SELECT apelido, level_poke,exp_poke,hp,stamina FROM poke WHERE id = id";
         Poke p;
@@ -59,28 +54,18 @@ public class PokeDAO {
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                switch (id) {
-
-                    case 1 -> {
-                        p = new GaloCururu(rs.getString("apelido"), rs.getInt("level_poke"), rs.getInt("exp_poke"),
-                                rs.getInt("hp"), rs.getInt("stamina"));
-                    }
-                    case 2 -> {
-                        p = new Papaco(rs.getString("apelido"), rs.getInt("level_poke"), rs.getInt("exp_poke"),
-                                rs.getInt("hp"), rs.getInt("stamina"));
-                    }
-                    default -> {
-                        return p = null;
-                    }
-                }
+                p = criaPokeClass(id, rs.getString("apelido"), rs.getInt("level_poke"),
+                        rs.getInt("exp_poke"), rs.getInt("hp"), rs.getInt("stamina"));
+                
+                return p;
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
         return null;
     }
-    
-    public Poke selecionarN(String nome) {
+
+  /*  public Poke selecionarN(String nome) {
         String sql = "SELECT apelido, level_poke,exp_poke,hp,stamina FROM poke WHERE apelido = apelido";
         Poke p;
         try (Connection conn = DAO.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -106,5 +91,5 @@ public class PokeDAO {
             System.err.println(e.getMessage());
         }
         return null;
-    }
+    } */
 }
