@@ -19,8 +19,6 @@ import java.sql.SQLException;
  * @author Aluno
  */
 public class PokeDAO {
-    
-    public ArrayList<Poke>pokes;
 
     private Poke criaPokeClass(int id, String apelido, int level, int exp, int hp, int stamina) {
         Poke p;
@@ -43,7 +41,6 @@ public class PokeDAO {
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
-        this.pokes = pokes;
         return pokes;
     }
 
