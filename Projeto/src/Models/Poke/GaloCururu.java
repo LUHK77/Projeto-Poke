@@ -14,10 +14,15 @@ import Models.Ataque.SocoNormal;
  */
 public class GaloCururu extends Poke {
 
-    private Ataque atkPrimario = new SocoNormal(this.getAtaqueBase());
-    private Ataque atkSecundario = new GarraDeFogo(this.getAtaqueBase());
-
-    public GaloCururu() {
+    public GaloCururu(String apelido,int level,int exp,int stamina,double hp) {
+        //Parte recebida na classe
+        this.setApelido(apelido);
+        this.setLevel(level);
+        this.setExp(exp);
+        this.setHp(hp);
+        this.setStamina(stamina);
+        //Parte ja setada
+        this.setId(1);
         this.setNome("Galo Cururu");
         this.setTipo("fogo");
         this.setAtaqueBase(8);
@@ -26,10 +31,13 @@ public class GaloCururu extends Poke {
         this.setHp(20);
         this.setMaxHp(20);
         this.setCd(5);
-        this.setImagePath("/img/poke_01.png");
+        this.setImagePath("poke_01.png");
+        this.setAtkPrimario(new SocoNormal(this.getAtaqueBase()));
+        this.setAtkPrimario(new GarraDeFogo(this.getAtaqueBase()));
     }
 
-    public boolean Atacar1(Poke inimigo) {
+    @Override
+    public boolean atacarPrimario(Poke inimigo) {
         if (this.consumoStamina(atkPrimario.getCusto())) {
             this.atkPrimario.acao(inimigo);
             return true;
@@ -38,12 +46,14 @@ public class GaloCururu extends Poke {
         }
     }
 
-    public boolean Atacar2(Poke inimigo) {
-        if (this.consumoStamina(atkSecundario.getCusto())) {
-            this.atkSecundario.acao(inimigo);
+    @Override
+    public boolean atacarSecundario(Poke inimigo) {
+        if (this.consumoStamina(atkPrimario.getCusto())) {
+            this.atkPrimario.acao(inimigo);
             return true;
         } else {
             return false;
         }
     }
+
 }

@@ -41,14 +41,9 @@ public class ArmaduraDeMadeira extends Ataque {
     }
 
     @Override
-    public boolean acao() {
-        int cd = poke.getCd + this.valor;
-        poke.setCd(cd);
-        return true;
+    public int acao() {
+        int cd = this.pokeCd + this.getValor();
+        return cd;
     }
     
 }
-
-   
-    
-

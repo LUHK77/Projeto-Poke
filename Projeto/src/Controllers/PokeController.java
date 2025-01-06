@@ -5,30 +5,27 @@
 package Controllers;
 
 import Models.Poke.Poke;
-import Models.PokeDAO;
-import java.util.ArrayList;
-import java.util.Optional;
 
 /**
  *
  * @author Aluno
  */
 public class PokeController {
-    private PokeDAO pokeDao;
+    private final Poke poke;
 
-    public PokeController(PokeDAO pokeDao) {
-        this.pokeDao = pokeDao;
+    public PokeController(Poke poke) {
+        this.poke = poke;
     }
     
-    public ArrayList<Poke> getAll(){
-    return pokeDao.getAll();
+    public boolean atacarPrimario(Poke inimigo){
+    return poke.atacarPrimario(inimigo);
     }
     
-    /*public Optional<Poke> selecionarPoke(int id){
-     return pokeDao.selectPoke(id);
-    } */
-    
-    public Poke selecionar(int id){
-     return pokeDao.selecionar(id);
+    public boolean atacarSecundario(Poke inimigo){
+    return poke.atacarSecundario(inimigo);
     }
- }
+    
+    public boolean descansar(){
+    return poke.descansar();
+    }
+}

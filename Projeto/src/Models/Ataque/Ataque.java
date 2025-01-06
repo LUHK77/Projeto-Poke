@@ -64,7 +64,7 @@ public abstract class Ataque {
     
     public abstract boolean acao(Poke inimigo);
     
-    public abstract boolean acao();
+    public abstract int acao();
     
     
     
