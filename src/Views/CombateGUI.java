@@ -5,9 +5,13 @@
 package Views;
 
 import Models.Poke.Poke;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 
 /**
  *
@@ -36,6 +40,50 @@ public class CombateGUI extends javax.swing.JFrame {
       lblP2Img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Papaco/default.gif")));
       
     } 
+      
+    /*public class InverterImagem {
+
+    public static void main(String[] args) throws IOException {
+        // Carregar a imagem original
+        BufferedImage imagemOriginal = ImageIO.read(new File("caminho/para/sua/imagem.jpg"));
+
+        // Inverter a imagem horizontalmente
+        BufferedImage imagemInvertida = inverterImagem(imagemOriginal);
+
+        // Criar o ImageIcon com a imagem invertida
+        ImageIcon imagemIconInvertida = new ImageIcon(imagemInvertida);
+
+        // Criar a janela
+        JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 400);
+
+        // Criar o JLabel e adicionar o ImageIcon
+        JLabel label = new JLabel(imagemIconInvertida);
+        frame.add(label);
+
+        // Exibir a janela
+        frame.setVisible(true);
+    } 
+
+    // Método para inverter a imagem horizontalmente
+    public BufferedImage inverterImagem(BufferedImage imagemOriginal) {
+        int largura = imagemOriginal.getWidth();
+        int altura = imagemOriginal.getHeight();
+        
+        // Criar uma nova imagem com as mesmas dimensões
+        BufferedImage imagemInvertida = new BufferedImage(largura, altura, imagemOriginal.getType());
+        
+        // Inverter a imagem pixel por pixel
+        for (int x = 0; x < largura; x++) {
+            for (int y = 0; y < altura; y++) {
+                // Copiar os pixels de forma invertida
+                imagemInvertida.setRGB(largura - 1 - x, y, imagemOriginal.getRGB(x, y));
+            }}
+        return imagemInvertida;
+    }*/
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -52,7 +100,6 @@ public class CombateGUI extends javax.swing.JFrame {
         lblP1Nome = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(19, 613));
 
         lblP1Img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/GaloCururu/default.gif"))); // NOI18N
 
@@ -67,30 +114,35 @@ public class CombateGUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(446, 446, 446)
-                .addComponent(lblP1Img)
-                .addGap(389, 389, 389)
-                .addComponent(lblP2Img, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(436, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(593, 593, 593)
-                .addComponent(lblP1Nome)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblP2Nome)
-                .addGap(592, 592, 592))
+                .addGap(443, 443, 443)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblP1Img)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(147, 147, 147)
+                        .addComponent(lblP1Nome)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 390, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblP2Img, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(438, 438, 438))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblP2Nome)
+                        .addGap(587, 587, 587))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(486, 486, 486)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblP1Nome, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblP2Nome, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap(467, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblP2Img, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblP1Img))
-                .addGap(234, 234, 234))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblP2Nome)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblP2Img))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblP1Nome)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblP1Img)))
+                .addGap(253, 253, 253))
         );
 
         pack();
