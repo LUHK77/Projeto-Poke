@@ -48,8 +48,8 @@ public class GaloCururu extends Poke {
 
     @Override
     public boolean atacarSecundario(Poke inimigo) {
-        if (this.consumoStamina(atkSecundario.getCusto())) {
-            this.atkSecundario.acao(inimigo);
+        if (this.consumoStamina(atkPrimario.getCusto())) {
+            this.atkPrimario.acao(inimigo);
             return true;
         } else {
             return false;

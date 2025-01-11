@@ -5,13 +5,19 @@
 package Views;
 
 import Models.Poke.Poke;
+import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.IIOException;
 import javax.imageio.ImageIO;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 
 /**
  *
@@ -26,6 +32,7 @@ public class CombateGUI extends javax.swing.JFrame {
     public CombateGUI() {
         initComponents();
         setCenario();
+        //setImage();
     }
     
     public void setCenario(){
@@ -34,56 +41,15 @@ public class CombateGUI extends javax.swing.JFrame {
         labelBackground.setBounds(0, 0, 1920, 1080);
         getContentPane().add(labelBackground);
     }
-      public void setImage(){
-      ImageIcon img = new ImageIcon();
+      public void setImage(Poke player){   
       lblP1Img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/GaloCururu/default.gif")));
-      lblP2Img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Papaco/default.gif")));
+      if(player == p2){
+        lblP2Img.setIcon(new ImageIcon(getClass().getResource(player.getImagePath())));
+      }
+      
       
     } 
-      
-    /*public class InverterImagem {
 
-    public static void main(String[] args) throws IOException {
-        // Carregar a imagem original
-        BufferedImage imagemOriginal = ImageIO.read(new File("caminho/para/sua/imagem.jpg"));
-
-        // Inverter a imagem horizontalmente
-        BufferedImage imagemInvertida = inverterImagem(imagemOriginal);
-
-        // Criar o ImageIcon com a imagem invertida
-        ImageIcon imagemIconInvertida = new ImageIcon(imagemInvertida);
-
-        // Criar a janela
-        JFrame frame = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 400);
-
-        // Criar o JLabel e adicionar o ImageIcon
-        JLabel label = new JLabel(imagemIconInvertida);
-        frame.add(label);
-
-        // Exibir a janela
-        frame.setVisible(true);
-    } 
-
-    // Método para inverter a imagem horizontalmente
-    public BufferedImage inverterImagem(BufferedImage imagemOriginal) {
-        int largura = imagemOriginal.getWidth();
-        int altura = imagemOriginal.getHeight();
-        
-        // Criar uma nova imagem com as mesmas dimensões
-        BufferedImage imagemInvertida = new BufferedImage(largura, altura, imagemOriginal.getType());
-        
-        // Inverter a imagem pixel por pixel
-        for (int x = 0; x < largura; x++) {
-            for (int y = 0; y < altura; y++) {
-                // Copiar os pixels de forma invertida
-                imagemInvertida.setRGB(largura - 1 - x, y, imagemOriginal.getRGB(x, y));
-            }}
-        return imagemInvertida;
-    }*/
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -97,52 +63,112 @@ public class CombateGUI extends javax.swing.JFrame {
         lblP1Img = new javax.swing.JLabel();
         lblP2Img = new javax.swing.JLabel();
         lblP2Nome = new javax.swing.JLabel();
-        lblP1Nome = new javax.swing.JLabel();
+        HpBarP2 = new javax.swing.JProgressBar();
+        lblP1Nome1 = new javax.swing.JLabel();
+        HpBarP1 = new javax.swing.JProgressBar();
+        lblLvP2 = new javax.swing.JLabel();
+        lblLvP1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(19, 613));
 
         lblP1Img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/GaloCururu/default.gif"))); // NOI18N
 
-        lblP2Img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Papaco/default.gif"))); // NOI18N
+        lblP2Img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Papaco/defaultIN.gif"))); // NOI18N
 
-        lblP2Nome.setText("jLabel1");
+        lblP2Nome.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblP2Nome.setForeground(new java.awt.Color(255, 255, 255));
+        lblP2Nome.setText("P2");
 
-        lblP1Nome.setText("jLabel1");
+        HpBarP2.setValue(100);
+
+        lblP1Nome1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblP1Nome1.setForeground(new java.awt.Color(255, 255, 255));
+        lblP1Nome1.setText("P1");
+
+        HpBarP1.setValue(100);
+
+        lblLvP2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblLvP2.setForeground(new java.awt.Color(255, 255, 255));
+        lblLvP2.setText("LV:1");
+
+        lblLvP1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblLvP1.setForeground(new java.awt.Color(255, 255, 255));
+        lblLvP1.setText("LV:1");
+
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1702, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 154, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(443, 443, 443)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblP1Img)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(147, 147, 147)
-                        .addComponent(lblP1Nome)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 390, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblP2Img, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(438, 438, 438))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblP2Nome)
-                        .addGap(587, 587, 587))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(515, 515, 515)
+                                .addComponent(lblLvP1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(HpBarP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(609, 609, 609)
+                                .addComponent(lblP1Nome1)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(464, 464, 464)
+                                .addComponent(lblLvP2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(HpBarP2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(556, 556, 556)
+                                .addComponent(lblP2Nome))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(450, 450, 450)
+                        .addComponent(lblP1Img)
+                        .addGap(269, 269, 269)
+                        .addComponent(lblP2Img, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 108, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(106, 106, 106))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(467, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
+                .addContainerGap(468, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblP1Nome1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(HpBarP1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(lblP2Nome)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblP2Img))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblP1Nome)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblP1Img)))
-                .addGap(253, 253, 253))
+                        .addComponent(HpBarP2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblLvP2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblLvP1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblP2Img)
+                    .addComponent(lblP1Img))
+                .addGap(55, 55, 55)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
         );
 
         pack();
@@ -186,8 +212,13 @@ public class CombateGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JProgressBar HpBarP1;
+    private javax.swing.JProgressBar HpBarP2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblLvP1;
+    private javax.swing.JLabel lblLvP2;
     private javax.swing.JLabel lblP1Img;
-    private javax.swing.JLabel lblP1Nome;
+    private javax.swing.JLabel lblP1Nome1;
     private javax.swing.JLabel lblP2Img;
     private javax.swing.JLabel lblP2Nome;
     // End of variables declaration//GEN-END:variables

@@ -14,15 +14,16 @@ import java.sql.SQLException;
  */
 public class DAO {
 
+    
     //Senac
-    /*private static final String URL = "jdbc:mysql://localhost:3306/dbpoke";
+    private static final String URL = "jdbc:mysql://localhost:3306/dbpoke";
     private static final String USER = "root";
-    private static final String pswd = "root";*/
+    private static final String pswd = "root";
     
     //Casa
-    private static final String URL = "jdbc:mysql://localhost:3306/DBpoke";
+    /*private static final String URL = "jdbc:mysql://localhost:3306/DBpoke";
     private static final String USER = "root";
-    private static final String pswd = "root123";
+    private static final String pswd = "root123";*/
     
     public static Connection getConnection(){
       Connection connection = null;
